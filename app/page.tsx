@@ -39,14 +39,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-export function BlurImage() {
-  return (
-    <div className="flex justify-center items-center w-full">
-      <div className="relative max-w-[min(100%,_1200px)]">
-        <div className="absolute bottom-0 left-0 right-0 h-[10%] bg-gradient-to-t from-[hsl(222,21%,12%)] to-transparent z-10"></div>
-      </div>
-    </div>
-  );
-}
