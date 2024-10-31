@@ -26,7 +26,7 @@ export default function Experience() {
             key={index}
             className="bg-[#1E2230] p-4 rounded-lg shadow-sm flex justify-between items-center"
           >
-            <div className="flex justify-between items-center flex-row">
+            <div className="flex justify-between items-center flex-row w-full">
               <h3 className="text-lg font-semibold text-gray-200">{exp.role}</h3>
               <h3>
               <a
