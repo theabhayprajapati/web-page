@@ -16,11 +16,11 @@ export default function Footer() {
               </a>
               {/* Email Link */}
               <a
-                href="mailto:hiring@anysphere.inc"
+                href="https://x.com/abhayprajapati_"
                 className="hover:text-newdimhover text-newdim hover:transition hover:duration-500 hidden min-[500px]:block"
                 style={{ fontSize: "11px" }}
               >
-                heyabhay@20.236.44.162
+                @abhayprajapati_
               </a>
             </div>
           </div>
