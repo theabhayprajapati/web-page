@@ -31,13 +31,13 @@ export default function Experience() {
               <h3>
               <a
                 href={exp.link}
-                className="text-blue-400 hover:text-blue-300 transition duration-200"
+                className="text-green-400 hover:text-green-300 transition duration-200"
               >
                 {exp.company}
               </a>
               </h3>
             </div>
-            <i className="text-blue-500">{/* Optional icon here */}</i>
+            <i className="text-green-500">{/* Optional icon here */}</i>
           </div>
         ))}
       </div>

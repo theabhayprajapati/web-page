@@ -13,6 +13,16 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
     },
+    animation: {
+      'light-ray': 'light-ray 1.5s linear infinite',
+    },
+    keyframes: {
+      'light-ray': {
+        '0%': { transform: 'scaleY(0) translateY(0)', opacity: '1' },
+        '50%': { opacity: '1' },
+        '100%': { transform: 'scaleY(2) translateY(-100%)', opacity: '0' },
+      },
+    },
   },
   plugins: [],
 };
