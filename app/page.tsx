@@ -55,7 +55,7 @@ const MatrixEffect = () => {
   console.log(matrix);
   return (
     <div
-      className="relative matrix-container"
+      className="relative matrix-container nocursor"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
