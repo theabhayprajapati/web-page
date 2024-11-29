@@ -65,7 +65,7 @@ const Page = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      // router.push("https://meet.google.com/oeh-swqb-imu");
+      router.push("https://meet.google.com/oeh-swqb-imu");
     }, 250);
   }, []);
   return (

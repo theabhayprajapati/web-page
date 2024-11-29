@@ -1,3 +1,7 @@
 {
+  "rules": {
+    "react-hooks/exhaustive-deps": "off", // Disables the missing dependency warning for useEffect
+    "@typescript-eslint/no-explicit-any": "off" // Allows the use of 'any' in TypeScript
+  },
   "extends": ["next/core-web-vitals", "next/typescript"]
 }

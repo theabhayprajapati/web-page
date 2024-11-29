@@ -4,7 +4,7 @@ import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
 import Projects from "@/components/Projects";
-import React, { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 export default function Home() {
   return (
     <div className="relative min-h-screen w-full bg-[#181C25]">
@@ -24,7 +24,6 @@ export default function Home() {
 
 const MatrixEffect = () => {
   const [matrix, setMatrix] = useState<any[]>([]);
-  const [hovered, setHovered] = useState(false);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   useEffect(() => {
@@ -40,12 +39,8 @@ const MatrixEffect = () => {
       );
       setMatrix(newMatrix);
     };
+    initializeMatrix();
 
-    const interval = setInterval(() => {
-      initializeMatrix();
-    }, 300);
-
-    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -67,9 +62,11 @@ const MatrixEffect = () => {
       <div className="matrix-grid">
         {matrix.map((row, rowIndex) =>
           row.map((char: string, colIndex: number) => (
-            <span key={`${rowIndex}-${colIndex}`} className="matrix-char">
-              {getRandomText()}
-            </span>
+            <OnHoverRandomText
+              key={`${rowIndex}-${colIndex}`}
+              rowIndex={rowIndex}
+              colIndex={colIndex}
+            />
           ))
         )}
       </div>
@@ -82,13 +79,50 @@ const MatrixEffect = () => {
         }}
       ></div>
 
-      <div className="relative flex flex-col items-center justify-center h-full bg-transparent">
-        <h1 className="text-5xl font-extrabold text-white">Abhay Prajapati</h1>
+      <div className="absolute bg-transparent p-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+              <h1 className="text-5xl font-extrabold text-white">Abhay Prajapati</h1>
         <p className="text-lg text-gray-300 mt-4">Full Stack</p>
       </div>
     </div>
   );
 };
+
+function OnHoverRandomText({
+  rowIndex,
+  colIndex,
+}: {
+  rowIndex: number;
+  colIndex: number;
+}) {
+  const [isHovering, setIsHovering] = useState(false);
+  const [randomText, setRandomText] = useState("");
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+
+    if (isHovering) {
+      interval = setInterval(() => {
+        setRandomText(getRandomText());
+      }, 100);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isHovering]);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
+      <span key={`${rowIndex}-${colIndex}`} className="matrix-char">
+        {isHovering ? randomText : getRandomText()}
+      </span>
+    </div>
+  );
+}
 
 function getRandomText() {
   const texts = [
@@ -99,6 +133,9 @@ function getRandomText() {
     "node",
     "typescript",
     "kubernetes",
+    "k8s",
+    "linux",
+    "ubuntu",
     "aws",
     "azure",
     "spring",
