@@ -12,9 +12,13 @@
     "deploy": "npm run pages:build && wrangler pages deploy"
   },
   "dependencies": {
+    "install": "^0.13.0",
+    "lucide-react": "^0.468.0",
     "next": "14.2.14",
+    "npm": "^10.9.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sitemap": "^8.0.0"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.5",

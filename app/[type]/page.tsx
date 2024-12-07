@@ -1,8 +1,7 @@
 "use client"; // Mark this component as a client component
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
 
 const PATHS: Record<string, { paths: string[]; url: string }> = {
   MEET: {
@@ -87,17 +86,26 @@ const Page = () => {
     let redirectPath = "";
     for (const key in PATHS) {
       const pathData = PATHS[key];
-      console.log(`Finding ${pathname} in ${pathData.paths.map((p) => `/${p}`).join(", ")}`);
+      console.log(
+        `Finding ${pathname} in ${pathData.paths
+          .map((p) => `/${p}`)
+          .join(", ")}`
+      );
       const path = pathname?.split("/")[1];
       if (pathData.paths.includes(path)) {
-        console.log('Matched', pathData.url);
+        console.log("Matched", pathData.url);
         redirectPath = pathData.url;
         break;
       }
     }
     setTimeout(() => {
-      // router.push(redirectPath);
-    }, 250);
+      router.push(redirectPath);
+      if (redirectPath === "") {
+        router.push("/not-found");
+      } else {
+        router.push(redirectPath);
+      }
+    }, 300);
   }, []);
   return (
     <div className="h-screen flex items-center justify-center">
