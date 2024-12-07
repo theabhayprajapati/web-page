@@ -2,11 +2,31 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+
+const PATHS: Record<string, { paths: string[]; url: string }> = {
+  MEET: {
+    paths: ["meet", "m", "meeting", "call", "video", "video-call"],
+    url: "https://meet.google.com/oeh-swqb-imu",
+  },
+  CHAT: {
+    paths: ["chat", "message", "dm", "c"],
+    url: "https://x.com/abhayprajapati_",
+  },
+  GITHUB: {
+    paths: ["github", "git", "code", "source"],
+    url: "https://github.com/theabhayprajapati",
+  },
+  RESUME: {
+    paths: ["resume", "cv", "portfolio"],
+    url: "/resume.pdf",
+  },
+};
 
 const Page = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const [frame, setFrame] = useState("");
-
   useEffect(() => {
     let A = 1,
       B = 1;
@@ -64,8 +84,19 @@ const Page = () => {
   }, []);
 
   useEffect(() => {
+    let redirectPath = "";
+    for (const key in PATHS) {
+      const pathData = PATHS[key];
+      console.log(`Finding ${pathname} in ${pathData.paths.map((p) => `/${p}`).join(", ")}`);
+      const path = pathname?.split("/")[1];
+      if (pathData.paths.includes(path)) {
+        console.log('Matched', pathData.url);
+        redirectPath = pathData.url;
+        break;
+      }
+    }
     setTimeout(() => {
-      router.push("https://meet.google.com/oeh-swqb-imu");
+      // router.push(redirectPath);
     }, 250);
   }, []);
   return (
