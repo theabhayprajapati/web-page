@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+export const runtime = 'edge';
 
 const PATHS: Record<string, { paths: string[]; url: string }> = {
   MEET: {
