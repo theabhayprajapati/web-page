@@ -19,7 +19,7 @@ const PATHS: Record<string, { paths: string[]; url: string }> = {
   },
   RESUME: {
     paths: ["resume", "cv", "portfolio"],
-    url: "/resume.pdf",
+    url: "https://drive.google.com/file/d/1PZWgEin73VTHjknq9XFyE2fLWnk2Hzkd",
   },
 };
 
